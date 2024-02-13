@@ -1,0 +1,70 @@
+﻿<Window x:Class="QQCourse.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QQCourse"
+        mc:Ignorable="d"
+         Title="Menu" Height="750" Width="1250" MinWidth="1250" MinHeight="750"
+        Style="{DynamicResource win}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="MenuColumn" Width="400"/>
+            <ColumnDefinition x:Name="ContentColumn" Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel x:Name="headerDockPanel" Style="{DynamicResource HeaderDockPanel}">
+            <Button x:Name="menuPageButton" Content="{DynamicResource Menu}" Style="{DynamicResource ActionMiniButton}"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    DockPanel.Dock="Left" Width="55" Margin="5" Click="menuPageButton_Click"/>
+            <Button x:Name="closePageButton" Content="{DynamicResource Close}" Style="{DynamicResource ActionMiniButton}"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    DockPanel.Dock="Right" Width="55" Margin="5" Click="clodePageButton_Click"/>
+            <TextBlock x:Name="headerTextBlock" Text="{DynamicResource TestingSystem}" Style="{DynamicResource HeaderText}"
+                       DockPanel.Dock="Left"/>
+        </DockPanel>
+
+        <DockPanel x:Name="sideMenuDockPanel" Style="{DynamicResource SideMenuDockPanel}" Visibility="Visible" HorizontalAlignment="Left">
+            <GridSplitter x:Name="splitter" DockPanel.Dock="Right" Width="10" HorizontalAlignment="Stretch" Style="{DynamicResource splitter}">
+            </GridSplitter>
+            <Button x:Name="myProfileButton" Style="{DynamicResource SideMenuButton}" 
+                    DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource MyProfile}"
+                    Margin="15,20,15,20" Click="myProfileButton_Click"/>
+            <Button x:Name="myTestsButton" Style="{DynamicResource SideMenuButton}"
+                    DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource MyTests}" 
+                    Margin="15,0,15,20" Click="myTestsButton_Click"/>
+            <Button x:Name="TestsBrowserButton" Style="{DynamicResource SideMenuButton}"
+                    DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource TestsBrowser}"
+                    Margin="15,0,15,20" Click="TestsBrowserButton_Click"/>
+            <Button x:Name="LogOutButton" Style="{DynamicResource SideMenuButton}"
+                    DockPanel.Dock="Bottom" Width="Auto" Height="80" Content="{DynamicResource LogOut}"
+                    Margin="15,0,15,20" Click="LogOutButton_Click"/>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button x:Name="ThemeButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
+                        Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
+                        Width="60" Height="60"
+                        Content="D" Margin="15,0,15,20" FontSize="16" Click="SettingsButton_Click" VerticalAlignment="Center" HorizontalAlignment="Center">
+                </Button>
+                <Button x:Name="LangButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
+                        Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
+                        Width="60" Height="60"
+                        Content="RU" Margin="0,0,15,20" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LangButton_Click">
+                </Button>
+                <Label/>
+            </DockPanel>
+
+            <Label/>
+        </DockPanel>
+
+        <Frame x:Name="RootFrame" Grid.Column="1" Grid.Row="1"
+               LoadCompleted="RootFrame_LoadCompleted"
+               Style="{DynamicResource RootFrame}" Navigated="RootFrame_Navigated"
+               />
+        <TextBlock x:Name="WelcomeText" Grid.Column="1" Grid.Row="1" TextAlignment="Center"
+                   Text="{DynamicResource Welcome}" Style="{DynamicResource HeaderText}"/>
+    </Grid>
+</Window>

@@ -1,0 +1,60 @@
+﻿<Window x:Class="QQCourse.Windows.EditAnsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QQCourse.Windows"
+        mc:Ignorable="d"
+        Title="Dialog" Height="200" Width="450" MaxHeight="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ThreeDBorderWindow"
+        Style="{DynamicResource win}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+
+        <DockPanel x:Name="HeaderDockPanel" Style="{DynamicResource HeaderDockPanel}">
+            <TextBlock x:Name="CaptionTextBlock" Text="CAPTION" Style="{DynamicResource HeaderText}" DockPanel.Dock="Top"/>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="0">
+            <DockPanel Margin="10,15,10,0" LastChildFill="False">
+                <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
+                    <Label Content="{DynamicResource Ans}" Style="{DynamicResource PrimaryText}" Width="110" FontSize="15"/>
+                    <TextBox x:Name="NameTextBox"
+                             TabIndex="1"
+                             VerticalContentAlignment="Center"
+                             Style="{DynamicResource PrimaryTextBox}"/>
+                </DockPanel>
+
+                <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
+                    <Label Content="{DynamicResource isCorrect}" Style="{DynamicResource PrimaryText}" Width="110" FontSize="15" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="CorrectComboBox" Style="{DynamicResource PrimaryComboBox}">
+                        <ComboBoxItem Content="{DynamicResource Correct}"/>
+                        <ComboBoxItem Content="{DynamicResource notCorrect}"/>
+                    </ComboBox>
+                </DockPanel>
+
+                <DockPanel Height="25" Margin="0,10,10,20" LastChildFill="False" DockPanel.Dock="Bottom">
+                    <Button x:Name="OkButton"
+                            Content="{DynamicResource OK}" Width="75"
+                            DockPanel.Dock="Right"
+                            TabIndex="4" IsDefault="True"
+                            Style="{DynamicResource ActionMiniButton}" Click="OkButton_Click"
+                            />
+                    <Button x:Name="CancelButton"
+                            Content="{DynamicResource Cancel}" Margin="0,0,10,0" Width="75"
+                            DockPanel.Dock="Right"
+                            TabIndex="5" IsCancel="True"
+                            Style="{DynamicResource ActionMiniButton}" Click="CancelButton_Click"
+                            
+                            />
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

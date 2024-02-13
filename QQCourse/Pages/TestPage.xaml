@@ -1,0 +1,60 @@
+﻿<Page x:Class="QQCourse.Pages.TestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QQCourse.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TestPage"
+      Style="{DynamicResource page}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2">
+            <Button x:Name="CloseButton" Content="X" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" Width="30" Height="30" Style="{DynamicResource ActionMiniButton}" Click="CloseButton_Click"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" x:Name="ContentScrollViewer">
+            <DockPanel LastChildFill="False">
+                <TextBlock Text="{DynamicResource StartTestName}" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="text" x:Name="NameTextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="{DynamicResource StartTestDesc}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="text" x:Name="DescTextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="{DynamicResource StartTestTimeToPass}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="text" x:Name="TimeTextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="Если вы не уложитесь в отведённое время, то из результата будет вычтено 20% балов" Style="{DynamicResource HeaderText}" FontSize="12" DockPanel.Dock="Top" Margin="0,0,0,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="{DynamicResource StartTestMinScore}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="text" x:Name="MinScoreTextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="{DynamicResource StartTestAuthor}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Text="text" x:Name="AuthorTextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+                <Button x:Name="StartButton" Style="{DynamicResource ActionMiniButton}" Content="{DynamicResource StartTest}" DockPanel.Dock="Top" Margin="10,30,10,30" 
+                        Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartButton_Click"/>
+            </DockPanel>
+            
+        </ScrollViewer>
+        <DockPanel x:Name="ContentDockPanel" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Visibility="Hidden" LastChildFill="False">
+            <TextBlock Text="Данный тест уже пройден!" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="{DynamicResource StartTestName}" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="text" x:Name="Name2TextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="{DynamicResource StartTestAuthor}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="text" x:Name="Author2TextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="Количество баллов" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="text" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center" x:Name="ScoreTextBlock"/>
+            <TextBlock Text="{DynamicResource StartTestMinScore}" Style="{DynamicResource HeaderText}" FontSize="16" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,30,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="text" x:Name="MinScore2TextBlock" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="Время прохождения" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="text" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center" x:Name="PassingTimeTextBlock"/>
+            <TextBlock Text="Проходной балл набран" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center " x:Name="PassedTextBlock"  Foreground="#FFC6FFBD"/>
+        </DockPanel>
+            <Frame x:Name="TestFrame" Grid.Row="0" Grid.RowSpan="2" Navigated="TestFrame_Navigated" Grid.Column="0" Grid.ColumnSpan="3"/>
+    </Grid>
+</Page>

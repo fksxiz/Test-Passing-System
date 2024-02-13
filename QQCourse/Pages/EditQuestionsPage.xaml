@@ -1,0 +1,120 @@
+﻿<Page x:Class="QQCourse.Pages.EditQuestionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QQCourse.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditQuestionsPage"
+            Style="{DynamicResource page}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="11*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1.2*" MinWidth="350"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*" MinWidth="350"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Style="{DynamicResource Rectangle}" Width="2" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Margin="0,10,0,10" VerticalAlignment="Center" Grid.Column="1">
+            <DockPanel>
+                <TextBlock Text="{DynamicResource Questions}" Style="{DynamicResource HeaderText}" DockPanel.Dock="Top" Margin="0,0,0,5"/>
+               <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource SearchShort}" TextAlignment="Right" Style="{DynamicResource HeaderText}" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchQuesTextBox" Style="{DynamicResource PrimaryTextBox}" Width="100" Height="30" VerticalContentAlignment="Center" TextChanged="SearchTextBox_TextChanged" Margin="0,0,10,0"/>
+                <StackPanel Orientation="Vertical">
+                    <Button x:Name="AddQuesButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource AddQuestion}" Height="Auto" Click="AddQuesButton_Click"/>
+                    <Button x:Name="DeleteQuesButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource DeleteQuestion}" Height="Auto" Margin="0,10,0,0" Click="DeleteQuesButton_Click"/>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <Button x:Name="EditQuesButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource Edit}" Height="Auto" Click="EditQuesButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+            </DockPanel>
+
+        </WrapPanel>
+
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" Margin="0,10,0,10" VerticalAlignment="Center" Grid.Column="3">
+            <DockPanel HorizontalAlignment="Center">
+                 <TextBlock Text="{DynamicResource Answers}" Style="{DynamicResource HeaderText}" HorizontalAlignment="Center" DockPanel.Dock="Top" Margin="0,0,0,5"/>
+            
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource SearchShort}" TextAlignment="Right" Style="{DynamicResource HeaderText}" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchAnsTextBox" Style="{DynamicResource PrimaryTextBox}" Width="100" Height="30" VerticalContentAlignment="Center" TextChanged="SearchAnsTextBox_TextChanged" Margin="0,0,10,0"/>
+                <StackPanel Orientation="Vertical">
+                    <Button x:Name="AddAnsButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource AddQuestion}" Height="Auto" Click="AddAnsButton_Click"/>
+                    <Button x:Name="DeleteAnsButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource DeleteQuestion}" Height="Auto" Margin="0,10,0,0" Click="DeleteAnsButton_Click"/>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0">
+                    <Button x:Name="EditAnsButton" Style="{DynamicResource ActionMiniButton}" Width="65" Content="{DynamicResource Edit}" Height="Auto" Click="EditAnsButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+            </DockPanel>
+        </WrapPanel>
+        
+        <StackPanel Grid.Row="0" Grid.Column="4">
+            <Button x:Name="CloseButton" Content="X" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,17,10,10" Width="30" Height="30" Style="{DynamicResource ActionMiniButton}" Click="CloseButton_Click"/>
+        </StackPanel>
+        <Rectangle  Height="5" Grid.Row="1" Style="{DynamicResource Rectangle}" Grid.Column="1" Grid.ColumnSpan="4"/>
+
+        <StackPanel Grid.Row="2"  Grid.Column="1" Orientation="Vertical">
+          
+        <DataGrid x:Name="QuestionsDataGrid" SelectionChanged="QuestionsDataGrid_SelectionChanged" Grid.Row="2"  Grid.Column="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserResizeRows="False"
+                  HorizontalScrollBarVisibility="Disabled"
+                  SelectionMode="Single"
+                  RowHeaderWidth="0"
+                  Style="{DynamicResource DataGrid}" ColumnHeaderStyle="{DynamicResource DataGridHeader}"
+                  CellStyle="{DynamicResource DataGridCell}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" 
+                                        Binding="{Binding Path=Question}" 
+                                        Width="10*"/>
+                <DataGridTextColumn Header="Тип" 
+                                        Binding="{Binding Path=Type}" 
+                                        Width="10*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+        <GridSplitter Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Width="4"
+                      ResizeDirection="Columns"
+                      HorizontalAlignment="Stretch" 
+                      Style="{DynamicResource splitter}"/>
+        <StackPanel Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Vertical">
+            
+        <DataGrid x:Name="AnswersDataGrid" SelectionChanged="QuestionsDataGrid_SelectionChanged" 
+                  Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  HorizontalScrollBarVisibility="Disabled"
+                  CanUserResizeRows="False"
+                  RowHeaderWidth="0"
+                  Style="{DynamicResource DataGrid}" ColumnHeaderStyle="{DynamicResource DataGridHeader}"
+                  CellStyle="{DynamicResource DataGridCell}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" 
+                                        Binding="{Binding Path=Answer}" 
+                                        Width="10*"/>
+                <DataGridTextColumn Header="Верный" 
+                                        Binding="{Binding Path=Correct}" 
+                                        Width="10*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,70 @@
+﻿<Window x:Class="QQCourse.PrimaryDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QQCourse"
+        mc:Ignorable="d"
+        Title="Dialog" Height="250" Width="400" MaxHeight="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ThreeDBorderWindow"
+        Style="{DynamicResource win}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+
+        <DockPanel x:Name="HeaderDockPanel" Style="{DynamicResource HeaderDockPanel}">
+            <TextBlock x:Name="CaptionTextBlock" Text="CAPTION" Style="{DynamicResource HeaderText}" DockPanel.Dock="Top"/>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1" Margin="0" LastChildFill="False">
+            <DockPanel Margin="10,15,10,0" LastChildFill="False">
+                <DockPanel DockPanel.Dock="Top">
+                    <TextBlock x:Name="MessageTextBlock" Text="Message" Width="350" Height="Auto"
+                               TextAlignment="Center" TextWrapping="Wrap" 
+                               Style="{DynamicResource HeaderText}"/>
+                </DockPanel>
+                <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top" LastChildFill="False">
+                    <Label Content="{DynamicResource Input}" Style="{DynamicResource PrimaryText}" Width="75"/>
+                    <ComboBox x:Name="InputComboBox"
+                             TabIndex="1"
+                             Visibility="Hidden"
+                             Width="0"
+                             Style="{DynamicResource PrimaryComboBox}">
+                        <ListBoxItem Content="{DynamicResource Male}"/>
+                        <ListBoxItem Content="{DynamicResource Female}"/>
+                    </ComboBox>
+                    <DatePicker x:Name="InputDatePicker"
+                             TabIndex="1"
+                             Visibility="Hidden"
+                             Width="0"
+                             Style="{DynamicResource PrimaryDatePicker}"/>
+                    <TextBox x:Name="InputTextBox"
+                             TabIndex="1"
+                             Width="300"
+                             Style="{DynamicResource PrimaryTextBox}"/>
+                </DockPanel>
+
+                <DockPanel Height="25" Margin="0,10,10,20" LastChildFill="False" DockPanel.Dock="Bottom">
+                    <Button x:Name="OkButton"
+                            Content="{DynamicResource OK}" Width="75" Height="25"
+                            DockPanel.Dock="Right"
+                            TabIndex="4" IsDefault="True" Click="OkButton_Click"
+                            Style="{DynamicResource ActionMiniButton}"
+                            />
+                    <Button x:Name="CancelButton"
+                            Content="{DynamicResource Cancel}" Margin="0,0,10,0" Width="75"
+                            DockPanel.Dock="Right"
+                            TabIndex="5" IsCancel="True" Click="CancelButton_Click"
+                            Style="{DynamicResource ActionMiniButton}"
+                            
+                            />
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>
