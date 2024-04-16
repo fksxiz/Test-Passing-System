@@ -98,8 +98,8 @@ namespace QQCourse
                             if (primaryDialog.DialogResponse == Core.VereficationCode)
                             {
                                 MainWindow Window = new MainWindow();
-                                Window.ShowDialog();
-                                Close();
+                                Window.Show();
+                                this.Close();
                             }
                             else
                             {

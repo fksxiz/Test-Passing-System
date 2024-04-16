@@ -12,8 +12,8 @@ namespace QQCourse
     {
         private string smtpServer = "smtp.mail.ru"; //smtp сервер
         private int smtpPort = 587; //port
-        private string smtpUsername = ""; //Имя почты для отправки сообщений
-        private string smtpPassword = ""; //Пароль почты для внешнего приложения
+        private string smtpUsername = "testpassingsystem@mail.ru"; //Имя почты для отправки сообщений
+        private string smtpPassword = "ER1zGG1jB7ytRd4BL9Ff"; //Пароль почты для внешнего приложения
         private bool IsAuthentification;
         public EmailMessageSender(bool IsAuthentification) {
             this.IsAuthentification = IsAuthentification;

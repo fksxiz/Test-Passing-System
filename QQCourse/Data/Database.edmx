@@ -53,7 +53,8 @@
           <Property Name="Time" Type="time" Precision="7" Nullable="false" />
           <Property Name="MinScore" Type="int" />
           <Property Name="Image" Type="varbinary(max)" />
-          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="FinishWhenTimeRunsOut" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -71,6 +72,7 @@
           <Property Name="Gender" Type="bit" />
           <Property Name="Avatar" Type="varbinary(max)" />
           <Property Name="Verified" Type="bit" />
+          <Property Name="NeedTraining" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Answers_Questions">
           <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
@@ -121,7 +123,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tests_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -249,7 +251,8 @@
           <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="MinScore" Type="Int32" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="FinishWhenTimeRunsOut" Type="Boolean" />
           <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Tests" FromRole="Tests" ToRole="Questions" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Tests" FromRole="Tests" ToRole="Results" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Tests_Users" FromRole="Tests" ToRole="Users" />
@@ -270,6 +273,7 @@
           <Property Name="Gender" Type="Boolean" />
           <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Verified" Type="Boolean" />
+          <Property Name="NeedTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Users" FromRole="Users" ToRole="Results" />
           <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Users" FromRole="Users" ToRole="Tests" />
         </EntityType>
@@ -322,7 +326,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Tests_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
@@ -460,6 +464,7 @@
                 <ScalarProperty Name="MinScore" ColumnName="MinScore" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="FinishWhenTimeRunsOut" ColumnName="FinishWhenTimeRunsOut" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -478,6 +483,7 @@
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
                 <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="NeedTraining" ColumnName="NeedTraining" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

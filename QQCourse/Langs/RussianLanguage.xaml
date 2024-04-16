@@ -91,6 +91,9 @@
     <system:String x:Key="MMFieldEmpty">Поле MM не заполнено!</system:String>
     <system:String x:Key="SSFieldEmpty">Поле SS не заполнено!</system:String>
     <system:String x:Key="EditTest">Редактирование</system:String>
+    <system:String x:Key="EndEarlyLabel">Закончить тест по окончанию времени?</system:String>
+    <system:String x:Key="Yes">Да</system:String>
+    <system:String x:Key="No">Нет</system:String>
 
     <system:String x:Key="DeleteConfirmation">Вы уверенны что хотите удалить выбранный элемент?</system:String>
     <system:String x:Key="DeleteDBException">Ошибка удаления информации из БД</system:String>
@@ -118,7 +121,7 @@
     <system:String x:Key="StartTestName">Название теста</system:String>
     <system:String x:Key="StartTestDesc">Описание</system:String>
     <system:String x:Key="StartTestTimeToPass">Время на прохождение</system:String>
-    <system:String x:Key="StartTestMinScore">Минимальное количество балов в процентах</system:String>
+    <system:String x:Key="StartTestMinScore">Минимальное количество балов</system:String>
     <system:String x:Key="StartTestAuthor">Автор</system:String>
     <system:String x:Key="EndTest">Закончить тестирование</system:String>
     <system:String x:Key="TimeL">Оставшееся время:</system:String>

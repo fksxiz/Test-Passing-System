@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace QQCourse.Pages
 {
@@ -33,20 +34,35 @@ namespace QQCourse.Pages
             TimeTextBlock.Text = test.Time.ToString();
             MinScoreTextBlock.Text = test.MinScore.ToString();
             AuthorTextBlock.Text = Core.Database.Users.FirstOrDefault(u => u.Id == test.CreatorId).Login;
-            if (Core.Database.Results.Count(r=>r.TestId==Test.Id&&r.UserId==Core.CurrentUser.Id)>0)
+            CheckTestFinishMode();
+            CheckTest();
+        }
+
+        private void CheckTestFinishMode()
+        {
+            if (Test.FinishWhenTimeRunsOut == null) return;
+            if (Test.FinishWhenTimeRunsOut == true)
+            {
+                TimeToPassDescTextBlock.Text = "Если вы не уложитесь в отведённое время, то тест будет закончен, а вопросы на которые вы не успели ответить будут засчитаны как неверные!";
+            }
+        }
+
+        private void CheckTest()
+        {
+            if (Core.Database.Results.Count(r => r.TestId == Test.Id && r.UserId == Core.CurrentUser.Id) > 0)
             {
                 Results result = Core.Database.Results.FirstOrDefault(r => r.TestId == Test.Id && r.UserId == Core.CurrentUser.Id);
                 ContentScrollViewer.Visibility = Visibility.Hidden;
                 ContentDockPanel.Visibility = Visibility.Visible;
-                Name2TextBlock.Text = test.Name;
+                Name2TextBlock.Text = Test.Name;
                 ScoreTextBlock.Text = result.Score.ToString();
                 PassingTimeTextBlock.Text = result.Time.ToString("hh':'mm':'ss");
-                MinScore2TextBlock.Text = (test.Questions.Count(q => q.Answers.Count() > 0) / 100.0 * test.MinScore).ToString();
-                Author2TextBlock.Text = Core.Database.Users.FirstOrDefault(u => u.Id == test.CreatorId).Login;
-                int c = test.Questions.Count(q => q.Answers.Count() > 0);
+                MinScore2TextBlock.Text = (Test.Questions.Count(q => q.Answers.Count() > 0) / 100.0 * Test.MinScore).ToString();
+                Author2TextBlock.Text = Core.Database.Users.FirstOrDefault(u => u.Id == Test.CreatorId).Login;
+                int c = Test.Questions.Count(q => q.Answers.Count() > 0);
                 if (c != 0)
                 {
-                    if (c / 100.0 * test.MinScore <= result.Score * 1.0 / c * 100.0)
+                    if (c / 100.0 * Test.MinScore <= result.Score)
                     {
                         PassedTextBlock.Text = "Проходной балл набран!";
                     }

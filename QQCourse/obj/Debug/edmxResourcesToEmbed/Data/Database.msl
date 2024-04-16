@@ -53,6 +53,7 @@
           <ScalarProperty Name="MinScore" ColumnName="MinScore" />
           <ScalarProperty Name="Image" ColumnName="Image" />
           <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+          <ScalarProperty Name="FinishWhenTimeRunsOut" ColumnName="FinishWhenTimeRunsOut" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -71,6 +72,7 @@
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="NeedTraining" ColumnName="NeedTraining" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

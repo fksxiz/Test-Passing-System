@@ -26,7 +26,8 @@ namespace QQCourse.Data
         public System.TimeSpan Time { get; set; }
         public Nullable<int> MinScore { get; set; }
         public byte[] Image { get; set; }
-        public Nullable<int> CreatorId { get; set; }
+        public int CreatorId { get; set; }
+        public Nullable<bool> FinishWhenTimeRunsOut { get; set; }
     
         public virtual ICollection<Questions> Questions { get; set; }
         public virtual ICollection<Results> Results { get; set; }

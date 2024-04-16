@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="20*"/>
@@ -82,7 +82,7 @@
                         <ListBoxItem Content="{DynamicResource Female}"/>
                     </ComboBox>
                 </DockPanel>
-                
+
                 <DockPanel Margin="0,5,0,0">
                     <Label Content="{DynamicResource Birthday}" Width="100" Style="{DynamicResource LabelText}"/>
                     <DatePicker x:Name="BirthdayDatePicker"
@@ -128,10 +128,10 @@
                             Style="{DynamicResource ActionMiniButton}" Click="OkButton_Click"
                             />
                     <Button x:Name="CancelButton"
-                            Content="{DynamicResource Cancel}" Margin="0,0,10,0" Width="75" Height="25"
+                            Content="{DynamicResource Cancel}" Margin="0,0,10,0" Width="75"
                             DockPanel.Dock="Right"
                             TabIndex="5" IsCancel="True"
-                            Style="{DynamicResource ActionMiniButton}" VerticalAlignment="Top" Click="CancelButton_Click"
+                            Style="{DynamicResource ActionMiniButton}" Click="CancelButton_Click"
                             />
                 </DockPanel>
 

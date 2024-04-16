@@ -87,6 +87,7 @@ namespace QQCourse.Windows
             test.Name=NameTextBox.Text;
             test.MinScore = Convert.ToInt32(MinScoreSlider.Value);
             test.Time = new TimeSpan(Math.Abs(int.Parse(HoursTextBox.Text)), Math.Abs(int.Parse(MinutesTextBox.Text)), Math.Abs(int.Parse(SecondsTextBox.Text)));
+            test.FinishWhenTimeRunsOut = FinishEarlyComboBox.SelectedIndex == 0;
             return true;
         }
 
