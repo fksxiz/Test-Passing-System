@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QQCourse.Windows"
         mc:Ignorable="d"
-        Title="Dialog" Height="370" Width="550" MaxHeight="500"
+        Title="Dialog" Height="470" Width="550" MaxHeight="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="ThreeDBorderWindow"
@@ -24,7 +24,7 @@
         <DockPanel Grid.Row="1" Margin="0">
             <DockPanel Margin="10,15,10,0" LastChildFill="False">
                 <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
-                    <Label Content="{DynamicResource TestName}" Style="{DynamicResource PrimaryText}" Width="200" FontSize="15"/>
+                    <TextBlock Text="{DynamicResource TestName}" Style="{DynamicResource LittleText}" Width="200" FontSize="15"/>
                     <TextBox x:Name="NameTextBox"
                              TabIndex="1"
                              VerticalContentAlignment="Center"
@@ -32,7 +32,7 @@
                 </DockPanel>
 
                 <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
-                    <Label Content="{DynamicResource Description}" Style="{DynamicResource PrimaryText}" Width="200" FontSize="15" VerticalAlignment="Top"/>
+                    <TextBlock Text="{DynamicResource Description}" Style="{DynamicResource LittleText}" Width="200" FontSize="15" VerticalAlignment="Top"/>
                     <TextBox x:Name="DescTextBox"
                              TabIndex="1"
                              Style="{DynamicResource PrimaryTextBox}"
@@ -40,13 +40,13 @@
                 </DockPanel>
                 
                 <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
-                    <Label Content="{DynamicResource MinScoreDlg}" Style="{DynamicResource PrimaryText}" Width="200" FontSize="15"/>
+                    <TextBlock Text="{DynamicResource MinScoreDlg}" Style="{DynamicResource LittleText}" Width="200" FontSize="15"/>
                     <Label Content="{Binding ElementName=MinScoreSlider, Path=Value, StringFormat={}{0}}" Style="{DynamicResource PrimaryText}" Width="50" HorizontalContentAlignment="Center" FontSize="15" DockPanel.Dock="Right"/>
                     <Slider x:Name="MinScoreSlider" Maximum="100" SmallChange="1" Margin="0,5,0,0" InputScope="Number"/>
                 </DockPanel>  
                 
                 <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
-                    <Label Content="{DynamicResource TimeToPassDlg}" Style="{DynamicResource PrimaryText}" Width="200" FontSize="15"/>
+                    <TextBlock Text="{DynamicResource TimeToPassDlg}" Style="{DynamicResource LittleText}" Width="200" FontSize="15"/>
                     <Label Content="{DynamicResource Hours}" Style="{DynamicResource PrimaryText}" FontSize="15"/>
                     <TextBox x:Name="HoursTextBox"
                              TabIndex="4"
@@ -75,6 +75,15 @@
 
                 </DockPanel>
 
+                <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top">
+                    <TextBlock Text="{DynamicResource EndEarlyLabel}" Style="{DynamicResource LittleText}" Width="200" FontSize="15" TextWrapping="Wrap"/>
+                    <ComboBox x:Name="FinishEarlyComboBox" Style="{DynamicResource PrimaryComboBox}" SelectedIndex="1"
+                                VerticalContentAlignment="Center">
+                        <ComboBoxItem Content="{DynamicResource Yes}"/>
+                        <ComboBoxItem Content="{DynamicResource No}"/>
+                    </ComboBox>
+                </DockPanel>
+                
                 <DockPanel Height="25" Margin="0,10,10,20" LastChildFill="False" DockPanel.Dock="Bottom">
                     <Button x:Name="OkButton"
                             Content="{DynamicResource OK}" Width="75" Height="25"

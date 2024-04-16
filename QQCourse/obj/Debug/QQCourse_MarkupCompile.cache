@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-F:\VS c#\TestPassingSystem\QQCourse\obj\Debug\
+F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\
 QQCourse
 none
 false
 DEBUG;TRACE
-F:\VS c#\TestPassingSystem\QQCourse\App.xaml
+F:\проекты\VS c#\TestPassingSystem\QQCourse\App.xaml
 181190970730
 4-238209197
 38-1792004873
-25347468904
+25907899204
 Langs\EnglishLanguage.xaml;Langs\RussianLanguage.xaml;Pages\EditQuestionsPage.xaml;Pages\ResultsPage.xaml;Pages\TestPage.xaml;Pages\TestPassingPage.xaml;Windows\AuthWindow.xaml;Themes\DarkTheme.xaml;Themes\LightTheme.xaml;Windows\EditAnsDialog.xaml;Windows\EditQuesDialog.xaml;Windows\EditTestDialog.xaml;Windows\MainWindow.xaml;Pages\MyTestsPage.xaml;Pages\ProfilePage.xaml;Pages\TestsBrowserPage.xaml;Windows\PrimaryDialog.xaml;Windows\RegistrationWindow.xaml;
 
 False

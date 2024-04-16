@@ -35,9 +35,10 @@ namespace QQCourse.Pages
             TimeLabel.Content = time.ToString("hh':'mm':'ss");
             TimeToPassLabel.Content = timeToPass.ToString("hh':'mm':'ss");
             ScoreLabel.Content = score;
+            double correctAnswPercent = score * 1.0 / maxScore * 100.0;
             if (maxScore != 0)
             {
-                if (score * 1.0 / maxScore * 100.0 >= maxScore / 100.0 * test.MinScore)
+                if (score >= maxScore / 100.0 * test.MinScore)
                 {
                     ResLabel.Content = "Проходной балл набран!";
                 }
