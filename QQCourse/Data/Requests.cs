@@ -12,27 +12,14 @@ namespace QQCourse.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Tests
+    public partial class Requests
     {
-        public Tests()
-        {
-            this.Questions = new HashSet<Questions>();
-            this.Requests = new HashSet<Requests>();
-            this.Results = new HashSet<Results>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public System.TimeSpan Time { get; set; }
-        public Nullable<int> MinScore { get; set; }
-        public byte[] Image { get; set; }
-        public int CreatorId { get; set; }
-        public Nullable<bool> FinishWhenTimeRunsOut { get; set; }
+        public Nullable<int> TestId { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public string Reason { get; set; }
     
-        public virtual ICollection<Questions> Questions { get; set; }
-        public virtual ICollection<Requests> Requests { get; set; }
-        public virtual ICollection<Results> Results { get; set; }
+        public virtual Tests Tests { get; set; }
         public virtual Users Users { get; set; }
     }
 }

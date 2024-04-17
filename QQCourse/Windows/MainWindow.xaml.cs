@@ -48,14 +48,7 @@ namespace QQCourse
             _Timer1.Enabled = false;
             SetTheme(curTheme);
             SetLang(curLang);
-            if (Core.CurrentUser.Birthday.Value.Date==DateTime.Now.Date)
-            {
-                WelcomeText.Text = "С днём рождения!";
-            }
-            else
-            {
-                WelcomeText.Text = "Добро пожаловать!";
-            }
+            CheckUserBirthday();
         }
 
         private int GetCurrentPageIndexByType(Type PageType)
@@ -94,6 +87,11 @@ namespace QQCourse
             ActivePages.RemoveAll(p => true);
             CurrentPageIndex = -1;
             RootFrame.Navigate(null);
+            CheckUserBirthday();
+        }
+
+        private void CheckUserBirthday()
+        {
             if (Core.CurrentUser.Birthday.Value.Date == DateTime.Now.Date)
             {
                 WelcomeText.Text = "С днём рождения!";
@@ -171,6 +169,7 @@ namespace QQCourse
             myProfileButton.Style = (Style)FindResource("SideMenuButton");
             myTestsButton.Style = (Style)FindResource("SideMenuButton");
             TestsBrowserButton.Style = (Style)FindResource("SideMenuButton");
+            requestsButton.Style = (Style)FindResource("SideMenuButton");
             if(button!= null) { 
                 button.Style = (Style)FindResource("SelectedSideMenuButton");
             }
@@ -273,6 +272,13 @@ namespace QQCourse
         private void RootFrame_Navigated(object sender, NavigationEventArgs e)
         {
 
+        }
+
+        private void requestsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CloseAllPage();
+            ShowPage(typeof(Pages.RequestsPage));
+            ChangeButtonsStyles(requestsButton);
         }
     }
 }

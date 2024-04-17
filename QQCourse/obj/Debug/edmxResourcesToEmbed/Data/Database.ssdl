@@ -18,6 +18,15 @@
     <Property Name="Type" Type="nvarchar" MaxLength="150" />
     <Property Name="TestId" Type="int" />
   </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="Results">
     <Key>
       <PropertyRef Name="Id" />
@@ -93,6 +102,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Requests_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Results_Tests">
     <End Role="Tests" Type="Self.Tests" Multiplicity="0..1" />
     <End Role="Results" Type="Self.Results" Multiplicity="*" />
@@ -163,6 +196,7 @@
   <EntityContainer Name="Хранилище mi_TestPassingSystemModelContainer">
     <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
@@ -174,6 +208,14 @@
     <AssociationSet Name="FK_Questions_Tests" Association="Self.FK_Questions_Tests">
       <End Role="Tests" EntitySet="Tests" />
       <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Tests" Association="Self.FK_Requests_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Users" Association="Self.FK_Requests_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Requests" EntitySet="Requests" />
     </AssociationSet>
     <AssociationSet Name="FK_Results_Tests" Association="Self.FK_Results_Tests">
       <End Role="Tests" EntitySet="Tests" />

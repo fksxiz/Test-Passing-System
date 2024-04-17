@@ -37,6 +37,9 @@
             <Button x:Name="myTestsButton" Style="{DynamicResource SideMenuButton}"
                     DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource MyTests}" 
                     Margin="15,0,15,20" Click="myTestsButton_Click"/>
+            <Button x:Name="requestsButton" Style="{DynamicResource SideMenuButton}"
+                    DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource Requests}" 
+                    Margin="15,0,15,20" Click="requestsButton_Click"/>
             <Button x:Name="TestsBrowserButton" Style="{DynamicResource SideMenuButton}"
                     DockPanel.Dock="Top" Width="Auto" Height="80" Content="{DynamicResource TestsBrowser}"
                     Margin="15,0,15,20" Click="TestsBrowserButton_Click"/>

@@ -21,6 +21,17 @@
     <NavigationProperty Name="Answers" Relationship="Self.FK_Answers_Questions" FromRole="Questions" ToRole="Answers" />
     <NavigationProperty Name="Tests" Relationship="Self.FK_Questions_Tests" FromRole="Questions" ToRole="Tests" />
   </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tests" Relationship="Self.FK_Requests_Tests" FromRole="Requests" ToRole="Tests" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Requests_Users" FromRole="Requests" ToRole="Users" />
+  </EntityType>
   <EntityType Name="Results">
     <Key>
       <PropertyRef Name="Id" />
@@ -56,6 +67,7 @@
     <Property Name="CreatorId" Type="Int32" Nullable="false" />
     <Property Name="FinishWhenTimeRunsOut" Type="Boolean" />
     <NavigationProperty Name="Questions" Relationship="Self.FK_Questions_Tests" FromRole="Tests" ToRole="Questions" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Tests" FromRole="Tests" ToRole="Requests" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Results_Tests" FromRole="Tests" ToRole="Results" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Tests_Users" FromRole="Tests" ToRole="Users" />
   </EntityType>
@@ -76,6 +88,7 @@
     <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Verified" Type="Boolean" />
     <Property Name="NeedTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Users" FromRole="Users" ToRole="Requests" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Results_Users" FromRole="Users" ToRole="Results" />
     <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Users" FromRole="Users" ToRole="Tests" />
   </EntityType>
@@ -100,6 +113,30 @@
       </Principal>
       <Dependent Role="Questions">
         <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -142,6 +179,7 @@
   <EntityContainer Name="mi_TestPassingSystemEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Answers" EntityType="Self.Answers" />
     <EntitySet Name="Questions" EntityType="Self.Questions" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" />
     <EntitySet Name="Results" EntityType="Self.Results" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="Tests" EntityType="Self.Tests" />
@@ -153,6 +191,14 @@
     <AssociationSet Name="FK_Questions_Tests" Association="Self.FK_Questions_Tests">
       <End Role="Tests" EntitySet="Tests" />
       <End Role="Questions" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Tests" Association="Self.FK_Requests_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Users" Association="Self.FK_Requests_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Requests" EntitySet="Requests" />
     </AssociationSet>
     <AssociationSet Name="FK_Results_Tests" Association="Self.FK_Results_Tests">
       <End Role="Tests" EntitySet="Tests" />

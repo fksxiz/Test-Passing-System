@@ -6,6 +6,7 @@
     <system:String x:Key="Close">Close</system:String>
     <system:String x:Key="MyProfile">My profile</system:String>
     <system:String x:Key="MyTests">My tests</system:String>
+    <system:String x:Key="Requests">Requests</system:String>
     <system:String x:Key="TestsBrowser">Test browser</system:String>
     <system:String x:Key="LogOut">Log out</system:String>
     <system:String x:Key="Welcome">Welcome!</system:String>

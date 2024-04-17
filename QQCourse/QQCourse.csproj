@@ -97,6 +97,9 @@
     <Compile Include="Data\Questions.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Requests.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Results.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -126,6 +129,9 @@
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RequestsPage.xaml.cs">
+      <DependentUpon>RequestsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ResultsPage.xaml.cs">
       <DependentUpon>ResultsPage.xaml</DependentUpon>
@@ -167,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditQuestionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RequestsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +288,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Pages\Images\questionmark.png" />
     <Resource Include="Pages\Settings.png" />
     <Resource Include="Pages\Images\Settings.png" />
     <Resource Include="Pages\Images\TestImageBlank.png" />

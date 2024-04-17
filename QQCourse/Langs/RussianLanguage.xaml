@@ -6,6 +6,7 @@
     <system:String x:Key="Close">Закрыть</system:String>
     <system:String x:Key="MyProfile">Мой профиль</system:String>
     <system:String x:Key="MyTests">Мои тесты</system:String>
+    <system:String x:Key="Requests">Запросы</system:String>
     <system:String x:Key="TestsBrowser">Браузер тестов</system:String>
     <system:String x:Key="LogOut">Выйти из аккаунта</system:String>
     <system:String x:Key="Welcome">Добро пожаловать!</system:String>
@@ -125,4 +126,10 @@
     <system:String x:Key="StartTestAuthor">Автор</system:String>
     <system:String x:Key="EndTest">Закончить тестирование</system:String>
     <system:String x:Key="TimeL">Оставшееся время:</system:String>
+
+    <system:String x:Key="RequestSearch">Введите имя для поиска: </system:String>
+    <system:String x:Key="RequestAgree">Одобрить</system:String>
+    <system:String x:Key="RequestDeny">Отклонить</system:String>
+    <system:String x:Key="RequestSender">Отправитель: </system:String>
+    <system:String x:Key="RequestReason">Причина: </system:String>
 </ResourceDictionary>

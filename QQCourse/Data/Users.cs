@@ -16,6 +16,7 @@ namespace QQCourse.Data
     {
         public Users()
         {
+            this.Requests = new HashSet<Requests>();
             this.Results = new HashSet<Results>();
             this.Tests = new HashSet<Tests>();
         }
@@ -34,6 +35,7 @@ namespace QQCourse.Data
         public Nullable<bool> Verified { get; set; }
         public string NeedTraining { get; set; }
     
+        public virtual ICollection<Requests> Requests { get; set; }
         public virtual ICollection<Results> Results { get; set; }
         public virtual ICollection<Tests> Tests { get; set; }
     }

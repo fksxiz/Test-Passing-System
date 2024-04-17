@@ -30,6 +30,7 @@ namespace QQCourse.Data
     
         public DbSet<Answers> Answers { get; set; }
         public DbSet<Questions> Questions { get; set; }
+        public DbSet<Requests> Requests { get; set; }
         public DbSet<Results> Results { get; set; }
         public DbSet<sysdiagrams> sysdiagrams { get; set; }
         public DbSet<Tests> Tests { get; set; }
