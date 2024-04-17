@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QQCourse"
         mc:Ignorable="d"
-         Title="Menu" Height="750" Width="1250" MinWidth="1250" MinHeight="750"
+         Title="Menu" Height="750" Width="1250" MinWidth="1250" MinHeight="850"
         Style="{DynamicResource win}">
     <Grid>
         <Grid.RowDefinitions>

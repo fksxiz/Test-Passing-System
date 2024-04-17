@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QQCourse.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,9 +41,14 @@ namespace QQCourse.Pages
             }
         }
 
+        private int GetSelectedIndex()
+        {
+            return RequestListView.SelectedIndex;
+        }
+
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            UpdateRequests();
         }
 
         private void TestsListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -57,12 +63,56 @@ namespace QQCourse.Pages
 
         private void AgreeButton_Click(object sender, RoutedEventArgs e)
         {
+            if (RequestListView.SelectedIndex >= 0)
+            {
+                try
+                {
+                    var currentRequest = RequestListView.SelectedItem as Requests;
+                    var results = Core.Database.Results.Where(T=>T.TestId == currentRequest.TestId && T.UserId == currentRequest.UserId);
 
+                    foreach (var result in results)
+                    {
+                        Core.Database.Results.Remove(result);
+                    }
+                    Core.Database.Requests.Remove(currentRequest);
+                    Core.Database.SaveChanges();
+                    UpdateRequests();
+                }catch (Exception ex)
+                {
+                    Core.CancelChanges(Core.Database.Requests);
+                    Core.CancelChanges(Core.Database.Results);
+                    DBSaveException();
+                }
+            }
         }
 
         private void DenyButton_Click(object sender, RoutedEventArgs e)
         {
+            if (RequestListView.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("Вы уверены что хотите отклонить запрос?", FindResource("Confirmation").ToString(), MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        var currentRequest = RequestListView.SelectedItem as Requests;
+                        Core.Database.Requests.Remove(currentRequest);
+                        Core.Database.SaveChanges();
+                        UpdateRequests();
+                    }
+                    catch (Exception ex)
+                    {
+                        Core.CancelChanges(Core.Database.Requests);
+                        Core.CancelChanges(Core.Database.Results);
+                        DBSaveException();
+                    }
+                }
+            }
+        }
 
+        private void DBSaveException()
+        {
+            MessageBox.Show(FindResource("SaveDBException").ToString(), FindResource("Error").ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            Core.CancelChanges(Core.Database.Requests);
         }
     }
 }

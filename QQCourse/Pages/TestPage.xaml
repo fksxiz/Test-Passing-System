@@ -54,6 +54,8 @@
             <TextBlock Text="Время прохождения" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center"/>
             <TextBlock Text="text" Style="{DynamicResource HeaderText}" FontSize="16" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center" x:Name="PassingTimeTextBlock"/>
             <TextBlock Text="Проходной балл набран" Style="{DynamicResource HeaderText}" FontSize="20" FontWeight="Bold" DockPanel.Dock="Top" Margin="10,20,10,10" TextWrapping="Wrap" TextAlignment="Center " x:Name="PassedTextBlock"  Foreground="#FFC6FFBD"/>
+            <Button x:Name="RequestButton" Style="{DynamicResource ActionMiniButton}" Content="{DynamicResource RequestBtn}" DockPanel.Dock="Top" Margin="10,30,10,30" 
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="RequestButton_Click"/>
         </DockPanel>
             <Frame x:Name="TestFrame" Grid.Row="0" Grid.RowSpan="2" Navigated="TestFrame_Navigated" Grid.Column="0" Grid.ColumnSpan="3"/>
     </Grid>

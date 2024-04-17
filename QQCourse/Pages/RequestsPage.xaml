@@ -52,14 +52,7 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <Image x:Name="QuestionImage" Width="150" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5" Grid.Row="0">
-                            <Image.Source>
-                                <Binding Path="Image">
-                                    <Binding.TargetNullValue>
-                                        <ImageSource>Images/questionmark.png</ImageSource>
-                                    </Binding.TargetNullValue>
-                                </Binding>
-                            </Image.Source>
+                        <Image x:Name="QuestionImage" Width="150" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5" Grid.Row="0" Source="Images/questionmark.png">
                         </Image>
                         <TextBlock Text="{Binding Tests.Name}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Width="150"
                                    x:Name="TestNameTextBlock" Style="{DynamicResource HeaderText}"/>

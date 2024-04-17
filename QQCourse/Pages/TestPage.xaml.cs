@@ -72,6 +72,16 @@ namespace QQCourse.Pages
                         PassedTextBlock.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(255, 141, 123));
                     }
                 }
+                CheckRequests();
+            }
+        }
+
+        private void CheckRequests()
+        {
+            if (Core.Database.Requests.Where(R=>R.TestId==Test.Id).Count()>0)
+            {
+                RequestButton.IsEnabled = false;
+                RequestButton.Content = "Запрос отправлен.";
             }
         }
 
@@ -98,6 +108,31 @@ namespace QQCourse.Pages
         {
             TestPassingPage testPassingPage = new TestPassingPage(Test);
             TestFrame.Navigate(testPassingPage);
+        }
+
+        private void RequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Requests request = new Requests();
+                request.TestId=Test.Id;
+                request.UserId=Core.CurrentUser.Id;
+                request.Reason = "-";
+                Core.Database.Requests.Add(request);
+                RequestButton.IsEnabled = false;
+                RequestButton.Content = "Запрос отправлен.";
+                Core.Database.SaveChanges();
+                MessageBox.Show(FindResource("RequestSuccessful").ToString(), FindResource("RequestInfo").ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
+            }catch (Exception ex)
+            {
+                DBSaveException();
+            }
+        }
+
+        private void DBSaveException()
+        {
+            MessageBox.Show(FindResource("SaveDBException").ToString(), FindResource("Error").ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            Core.CancelChanges(Core.Database.Requests);
         }
     }
 }

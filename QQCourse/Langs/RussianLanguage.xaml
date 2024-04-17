@@ -132,4 +132,7 @@
     <system:String x:Key="RequestDeny">Отклонить</system:String>
     <system:String x:Key="RequestSender">Отправитель: </system:String>
     <system:String x:Key="RequestReason">Причина: </system:String>
+    <system:String x:Key="RequestBtn">Отправить запрос на перепрохождение</system:String>
+    <system:String x:Key="RequestSuccessful">Запрос на перепрохождение отправлен!</system:String>
+    <system:String x:Key="RequestInfo">Уведомление</system:String>
 </ResourceDictionary>
