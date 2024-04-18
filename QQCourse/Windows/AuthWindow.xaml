@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Авторизация" Height="200" Width="400"
         Loaded="Window_Loaded"
-        Style="{DynamicResource win}">
+        Style="{DynamicResource win}"
+        Icon="Images/TestImageBlue.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

@@ -263,7 +263,7 @@ namespace QQCourse.Pages
 
         private void ConfirmEmailButton_Click(object sender, RoutedEventArgs e)
         {
-            EmailMessageSender emailMessageSender = new EmailMessageSender(false);
+            EmailMessageSender emailMessageSender = new EmailMessageSender(EmailMessageSender.MessageType.CONFIRMATION);
             if (emailMessageSender.SendMessage(Core.CurrentUser.Email))
             {
                 PrimaryDialog primaryDialog = new PrimaryDialog(FindResource("EmailVerefication").ToString(), FindResource("InputEmailCode").ToString()+" "+Core.CurrentUser.Email, PrimaryDialog.InputType.Text);

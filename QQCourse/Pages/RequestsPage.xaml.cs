@@ -21,10 +21,13 @@ namespace QQCourse.Pages
     /// </summary>
     public partial class RequestsPage : Page
     {
+        private EmailMessageSender emailSender;
+
         public RequestsPage()
         {
             InitializeComponent();
             UpdateRequests();
+            emailSender = new EmailMessageSender(EmailMessageSender.MessageType.REQUEST_INFO);
         }
 
         public void UpdateRequests()
@@ -67,8 +70,9 @@ namespace QQCourse.Pages
             {
                 try
                 {
-                    var currentRequest = RequestListView.SelectedItem as Requests;
+                    Requests currentRequest = RequestListView.SelectedItem as Requests;
                     var results = Core.Database.Results.Where(T=>T.TestId == currentRequest.TestId && T.UserId == currentRequest.UserId);
+                    string testName = currentRequest.Tests.Name;
 
                     foreach (var result in results)
                     {
@@ -76,6 +80,7 @@ namespace QQCourse.Pages
                     }
                     Core.Database.Requests.Remove(currentRequest);
                     Core.Database.SaveChanges();
+                    emailSender.SendMessage(Core.CurrentUser.Email, testName,"одобрена");
                     UpdateRequests();
                 }catch (Exception ex)
                 {
@@ -95,8 +100,10 @@ namespace QQCourse.Pages
                     try
                     {
                         var currentRequest = RequestListView.SelectedItem as Requests;
+                        string testName = currentRequest.Tests.Name;
                         Core.Database.Requests.Remove(currentRequest);
                         Core.Database.SaveChanges();
+                        emailSender.SendMessage(Core.CurrentUser.Email, testName, "отклонена");
                         UpdateRequests();
                     }
                     catch (Exception ex)

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:QQCourse"
         mc:Ignorable="d"
          Title="Menu" Height="750" Width="1250" MinWidth="1250" MinHeight="850"
-        Style="{DynamicResource win}">
+        Style="{DynamicResource win}"
+        Icon="Images/TestImageBlue.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>

@@ -23,6 +23,9 @@ namespace QQCourse.Pages
     /// </summary>
     public partial class TestPassingPage : Page
     {
+        private TimeSpan zero = new TimeSpan(0, 0, 0);
+        private TimeSpan second = new TimeSpan(0, 0, 1);
+
         private TimeSpan _time;
         private DispatcherTimer _timer;
         private TimeSpan testTime;
@@ -38,21 +41,21 @@ namespace QQCourse.Pages
             DataContext = new TestViewModel(test);
             TestLabel.Content = test.Name;
             _time = test.Time;
-            testTime = new TimeSpan(0,0,0);
+            testTime = zero;
             timeToPass = test.Time;
             _test = test;
         }
 
         private void ChangeTimer(object sender, EventArgs e)
         {
-            if (_time==new TimeSpan(0, 0, 0))
+            if (_time==zero && _test.FinishWhenTimeRunsOut==true)
             {
                 AddInfo();
                 _timer.Stop();
                 return;
             }
-            testTime = testTime.Add(new TimeSpan(0, 0, 1));
-            _time =_time.Subtract(new TimeSpan(0, 0, 1));
+            testTime = testTime.Add(second);
+            _time =_time.Subtract(second);
             TimeLabel.Content = _time.ToString("hh':'mm':'ss");
         }
 

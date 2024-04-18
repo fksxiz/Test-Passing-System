@@ -75,7 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Answer.cs" />
+    <Compile Include="Common\Answer.cs" />
     <Compile Include="Data\Answers.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -118,9 +118,9 @@
     <Compile Include="Data\Users.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="EmailMessageSender.cs" />
-    <Compile Include="ETDOut.cs" />
-    <Compile Include="ImageParserBase64.cs" />
+    <Compile Include="Common\EmailMessageSender.cs" />
+    <Compile Include="Common\ETDOut.cs" />
+    <Compile Include="Common\ImageParserBase64.cs" />
     <Compile Include="Pages\EditQuestionsPage.xaml.cs">
       <DependentUpon>EditQuestionsPage.xaml</DependentUpon>
     </Compile>
@@ -145,9 +145,9 @@
     <Compile Include="Pages\TestsBrowserPage.xaml.cs">
       <DependentUpon>TestsBrowserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Quest.cs" />
-    <Compile Include="QuestResult.cs" />
-    <Compile Include="TextS.cs" />
+    <Compile Include="Common\Quest.cs" />
+    <Compile Include="Common\QuestResult.cs" />
+    <Compile Include="Common\TextS.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
     <Compile Include="Windows\EditAnsDialog.xaml.cs">
       <DependentUpon>EditAnsDialog.xaml</DependentUpon>
@@ -227,7 +227,7 @@
     <Compile Include="Windows\AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core.cs" />
+    <Compile Include="Common\Core.cs" />
     <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -288,6 +288,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Windows\Images\TestImageBlue.png" />
+    <Resource Include="Windows\Images\TestImageBlank.png" />
     <Resource Include="Pages\Images\questionmark.png" />
     <Resource Include="Pages\Settings.png" />
     <Resource Include="Pages\Images\Settings.png" />

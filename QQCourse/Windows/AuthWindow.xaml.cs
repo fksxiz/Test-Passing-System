@@ -90,7 +90,7 @@ namespace QQCourse
                     }
                     else
                     {
-                        EmailMessageSender emailMessageSender = new EmailMessageSender(true);
+                        EmailMessageSender emailMessageSender = new EmailMessageSender(EmailMessageSender.MessageType.AUTHENTIFICATION);
                         emailMessageSender.SendMessage(Core.CurrentUser.Email);
                         PrimaryDialog primaryDialog = new PrimaryDialog(FindResource("Confirmation").ToString(), FindResource("InputEmailCode").ToString()+" "+Core.CurrentUser.Email.ToString(),PrimaryDialog.InputType.Text);
                         primaryDialog.ShowDialog();
