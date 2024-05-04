@@ -10,6 +10,15 @@
     <Property Name="QuestId" Type="Int32" />
     <NavigationProperty Name="Questions" Relationship="Self.FK_Answers_Questions" FromRole="Answers" ToRole="Questions" />
   </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Notifications_Users" FromRole="Notifications" ToRole="Users" />
+  </EntityType>
   <EntityType Name="Questions">
     <Key>
       <PropertyRef Name="Id" />
@@ -88,6 +97,7 @@
     <Property Name="Avatar" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Verified" Type="Boolean" />
     <Property Name="NeedTraining" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
     <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Users" FromRole="Users" ToRole="Requests" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Results_Users" FromRole="Users" ToRole="Results" />
     <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Users" FromRole="Users" ToRole="Tests" />
@@ -101,6 +111,18 @@
       </Principal>
       <Dependent Role="Answers">
         <PropertyRef Name="QuestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notifications_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -178,6 +200,7 @@
   </Association>
   <EntityContainer Name="mi_TestPassingSystemEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Answers" EntityType="Self.Answers" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" />
     <EntitySet Name="Questions" EntityType="Self.Questions" />
     <EntitySet Name="Requests" EntityType="Self.Requests" />
     <EntitySet Name="Results" EntityType="Self.Results" />
@@ -187,6 +210,10 @@
     <AssociationSet Name="FK_Answers_Questions" Association="Self.FK_Answers_Questions">
       <End Role="Questions" EntitySet="Questions" />
       <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notifications_Users" Association="Self.FK_Notifications_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Notifications" EntitySet="Notifications" />
     </AssociationSet>
     <AssociationSet Name="FK_Questions_Tests" Association="Self.FK_Questions_Tests">
       <End Role="Tests" EntitySet="Tests" />

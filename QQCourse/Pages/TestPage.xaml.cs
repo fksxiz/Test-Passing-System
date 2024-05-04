@@ -115,15 +115,19 @@ namespace QQCourse.Pages
             try
             {
                 Requests request = new Requests();
+                Notifications notification = new Notifications();
+                notification.UserId = Test.CreatorId;
+                notification.Message = $"Вам был отправлен запрос на перепрохождение теста {Test.Name} пользователем {Core.CurrentUser.Login}";
                 request.TestId=Test.Id;
                 request.UserId=Core.CurrentUser.Id;
                 request.Reason = "-";
+                Core.Database.Notifications.Add(notification);
                 Core.Database.Requests.Add(request);
                 RequestButton.IsEnabled = false;
                 RequestButton.Content = "Запрос отправлен.";
                 Core.Database.SaveChanges();
                 MessageBox.Show(FindResource("RequestSuccessful").ToString(), FindResource("RequestInfo").ToString(), MessageBoxButton.OK, MessageBoxImage.Information);
-            }catch (Exception ex)
+            }catch
             {
                 DBSaveException();
             }
@@ -133,6 +137,7 @@ namespace QQCourse.Pages
         {
             MessageBox.Show(FindResource("SaveDBException").ToString(), FindResource("Error").ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
             Core.CancelChanges(Core.Database.Requests);
+            Core.CancelChanges(Core.Database.Notifications);
         }
     }
 }

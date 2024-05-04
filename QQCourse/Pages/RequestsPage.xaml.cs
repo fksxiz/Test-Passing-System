@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace QQCourse.Pages
 {
@@ -73,14 +74,15 @@ namespace QQCourse.Pages
                     Requests currentRequest = RequestListView.SelectedItem as Requests;
                     var results = Core.Database.Results.Where(T=>T.TestId == currentRequest.TestId && T.UserId == currentRequest.UserId);
                     string testName = currentRequest.Tests.Name;
-
+                    int userId = (int)currentRequest.UserId;
                     foreach (var result in results)
                     {
                         Core.Database.Results.Remove(result);
                     }
+                    emailSender.SendMessage(currentRequest.Users.Email, testName, "одобрена");
                     Core.Database.Requests.Remove(currentRequest);
+                    SendNotification(userId, testName);
                     Core.Database.SaveChanges();
-                    emailSender.SendMessage(Core.CurrentUser.Email, testName,"одобрена");
                     UpdateRequests();
                 }catch (Exception ex)
                 {
@@ -101,9 +103,12 @@ namespace QQCourse.Pages
                     {
                         var currentRequest = RequestListView.SelectedItem as Requests;
                         string testName = currentRequest.Tests.Name;
+                        int userId = (int)currentRequest.UserId;
                         Core.Database.Requests.Remove(currentRequest);
+                        emailSender.SendMessage(currentRequest.Users.Email, testName, "одобрена");
+                        SendNotification(userId, testName,"отклонен");
                         Core.Database.SaveChanges();
-                        emailSender.SendMessage(Core.CurrentUser.Email, testName, "отклонена");
+                        emailSender.SendMessage(currentRequest.Users.Email, testName, "отклонена");
                         UpdateRequests();
                     }
                     catch (Exception ex)
@@ -120,6 +125,23 @@ namespace QQCourse.Pages
         {
             MessageBox.Show(FindResource("SaveDBException").ToString(), FindResource("Error").ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
             Core.CancelChanges(Core.Database.Requests);
+        }
+
+        private void SendNotification(int userId, string testName, string requestsState="одобрен")
+        {
+            try
+            {
+                Notifications notification = new Notifications();
+                notification.UserId = userId;
+                notification.Message = $"Ваш запрос на перепрохождение теста {testName} был {requestsState}";
+                Core.Database.Notifications.Add(notification);
+                Core.Database.SaveChanges();
+            }
+            catch
+            {
+                Core.CancelChanges(Core.Database.Notifications);
+                DBSaveException();
+            }
         }
     }
 }

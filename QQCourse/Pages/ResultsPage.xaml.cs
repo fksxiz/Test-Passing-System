@@ -104,6 +104,7 @@ namespace QQCourse.Pages
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Core.AppMainWindow.CloseAllPage();
+            Core.AppMainWindow.ShowPage(typeof(TestsBrowserPage));
         }
 
         private void ResultsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

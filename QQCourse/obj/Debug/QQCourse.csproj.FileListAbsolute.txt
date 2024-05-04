@@ -356,3 +356,5 @@ F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\QQCourse.exe
 F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\QQCourse.pdb
 F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\Pages\RequestsPage.g.cs
 F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\Pages\RequestsPage.baml
+F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\Pages\NotificationsPage.g.cs
+F:\проекты\VS c#\TestPassingSystem\QQCourse\obj\Debug\Pages\NotificationsPage.baml

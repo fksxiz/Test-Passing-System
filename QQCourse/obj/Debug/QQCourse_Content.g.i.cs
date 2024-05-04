@@ -8,8 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/database.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/dstsbase.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/dstsbase.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/darktheme.svg")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/lighttheme.svg")]
 

@@ -1,6 +1,10 @@
-﻿using QQCourse.Pages;
+﻿using QQCourse.Data;
+using QQCourse.Pages;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +26,8 @@ namespace QQCourse
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Notifications> notifications;
+        private bool notificationsCheckActive;
         private List<Page> ActivePages;
         private int CurrentPageIndex;
         private bool isOpen = true;
@@ -38,27 +44,13 @@ namespace QQCourse
             CurrentPageIndex = -1;
             Core.AppMainWindow = this;
             sideMenuDockPanel.Width = 400;
-            _Timer = new System.Timers.Timer(500);
-            _Timer.Elapsed += OnTimer;
-            _Timer.AutoReset = false;
-            _Timer.Enabled = false;
-            _Timer1 = new System.Timers.Timer(500);
-            _Timer1.Elapsed += OnTimer1;
-            _Timer1.AutoReset = false;
-            _Timer1.Enabled = false;
+            notifications = new ObservableCollection<Notifications>();
+            notificationsCheckActive = true;
+            CheckNotifications();
             SetTheme(curTheme);
             SetLang(curLang);
             CheckUserBirthday();
-        }
-
-        private int GetCurrentPageIndexByType(Type PageType)
-        {
-            int Index = ActivePages.Count - 1;
-            while (Index > 0 && ActivePages[Index].GetType() != PageType)
-            {
-                Index--;
-            }
-            return Index;
+            InitTimers();
         }
 
         public void ShowPage(Type PageType)
@@ -88,6 +80,45 @@ namespace QQCourse
             CurrentPageIndex = -1;
             RootFrame.Navigate(null);
             CheckUserBirthday();
+        }
+
+        private async Task CheckNotifications()
+        {
+            while(notificationsCheckActive)
+            {
+                ObservableCollection<Notifications> dbNotifs = new ObservableCollection<Notifications>(Core.Database.Notifications.Where(n => n.UserId == Core.CurrentUser.Id).ToList());
+                if (dbNotifs != null)
+                {
+                    if (!notifications.Equals(dbNotifs))
+                    {
+                        notifications = dbNotifs;
+                        NotificationsButton.Content = "N - " + notifications.Count;
+                    }
+                }
+                await Task.Delay(TimeSpan.FromSeconds(15));
+            }
+        }
+
+        private void InitTimers()
+        {
+            _Timer = new System.Timers.Timer(500);
+            _Timer.Elapsed += OnTimer;
+            _Timer.AutoReset = false;
+            _Timer.Enabled = false;
+            _Timer1 = new System.Timers.Timer(500);
+            _Timer1.Elapsed += OnTimer1;
+            _Timer1.AutoReset = false;
+            _Timer1.Enabled = false;
+        }
+
+        private int GetCurrentPageIndexByType(Type PageType)
+        {
+            int Index = ActivePages.Count - 1;
+            while (Index > 0 && ActivePages[Index].GetType() != PageType)
+            {
+                Index--;
+            }
+            return Index;
         }
 
         private void CheckUserBirthday()
@@ -202,6 +233,7 @@ namespace QQCourse
             Core.CurrentUser = null;
             a.Show();
             Close();
+            notificationsCheckActive = false;
         }
 
         private void clodePageButton_Click(object sender, RoutedEventArgs e)
@@ -279,6 +311,13 @@ namespace QQCourse
             CloseAllPage();
             ShowPage(typeof(Pages.RequestsPage));
             ChangeButtonsStyles(requestsButton);
+        }
+
+        private void NotificationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            CloseAllPage();
+            ShowPage(typeof (NotificationsPage));
+            ChangeButtonsStyles(null);
         }
     }
 }

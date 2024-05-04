@@ -47,18 +47,22 @@
             <Button x:Name="LogOutButton" Style="{DynamicResource SideMenuButton}"
                     DockPanel.Dock="Bottom" Width="Auto" Height="80" Content="{DynamicResource LogOut}"
                     Margin="15,0,15,20" Click="LogOutButton_Click"/>
-            <DockPanel DockPanel.Dock="Bottom">
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False" Margin="15,0,15,0">
                 <Button x:Name="ThemeButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
                         Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
                         Width="60" Height="60"
-                        Content="D" Margin="15,0,15,20" FontSize="16" Click="SettingsButton_Click" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        Content="D" Margin="0,0,15,20" FontSize="16" Click="SettingsButton_Click" VerticalAlignment="Center" HorizontalAlignment="Center">
                 </Button>
                 <Button x:Name="LangButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
                         Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
                         Width="60" Height="60"
                         Content="RU" Margin="0,0,15,20" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LangButton_Click">
                 </Button>
-                <Label/>
+                <Button x:Name="NotificationsButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
+                        Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
+                        Height="60"
+                        Content="N-0" Margin="0,0,0,20" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="NotificationsButton_Click">
+                </Button>
             </DockPanel>
 
             <Label/>

@@ -76,56 +76,62 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\Answer.cs" />
-    <Compile Include="Data\Answers.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Database.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Database.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Database.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Database.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Questions.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Requests.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Results.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Tests.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Users.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
     <Compile Include="Common\EmailMessageSender.cs" />
     <Compile Include="Common\ETDOut.cs" />
     <Compile Include="Common\ImageParserBase64.cs" />
+    <Compile Include="Data\Answers.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dstsbase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dstsbase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dstsbase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dstsbase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dstsbase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Notifications.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Questions.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Requests.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Results.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Tests.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Users.cs">
+      <DependentUpon>Dstsbase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditQuestionsPage.xaml.cs">
       <DependentUpon>EditQuestionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyTestsPage.xaml.cs">
       <DependentUpon>MyTestsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotificationsPage.xaml.cs">
+      <DependentUpon>NotificationsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -173,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EditQuestionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NotificationsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,12 +281,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\Database.edmx">
+    <EntityDeploy Include="Data\Dstsbase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Database.Designer.cs</LastGenOutput>
+      <LastGenOutput>Dstsbase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\Database.edmx.diagram">
-      <DependentUpon>Database.edmx</DependentUpon>
+    <None Include="Data\Dstsbase.edmx.diagram">
+      <DependentUpon>Dstsbase.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -296,15 +306,15 @@
     <Resource Include="Pages\Images\TestImageBlank.png" />
     <Resource Include="Pages\Images\TestImageBlue.png" />
     <Resource Include="Images\DarkTheme.png" />
-    <Content Include="Data\Database.Context.tt">
+    <Content Include="Data\Dstsbase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.Context.cs</LastGenOutput>
+      <DependentUpon>Dstsbase.edmx</DependentUpon>
+      <LastGenOutput>Dstsbase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\Database.tt">
+    <Content Include="Data\Dstsbase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Database.edmx</DependentUpon>
-      <LastGenOutput>Database.cs</LastGenOutput>
+      <DependentUpon>Dstsbase.edmx</DependentUpon>
+      <LastGenOutput>Dstsbase.cs</LastGenOutput>
     </Content>
     <Content Include="Images\DarkTheme.svg" />
     <Resource Include="Images\LightTheme.png" />

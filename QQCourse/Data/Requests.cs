@@ -15,8 +15,8 @@ namespace QQCourse.Data
     public partial class Requests
     {
         public int Id { get; set; }
-        public Nullable<int> TestId { get; set; }
-        public Nullable<int> UserId { get; set; }
+        public int TestId { get; set; }
+        public int UserId { get; set; }
         public string Reason { get; set; }
     
         public virtual Tests Tests { get; set; }

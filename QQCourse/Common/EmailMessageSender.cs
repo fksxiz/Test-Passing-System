@@ -14,7 +14,8 @@ namespace QQCourse
         {
             AUTHENTIFICATION,
             CONFIRMATION,
-            REQUEST_INFO
+            REQUEST_INFO,
+            REQUEST_SENDED
         }
 
         private string smtpServer = "smtp.mail.ru"; //smtp сервер
@@ -49,7 +50,11 @@ namespace QQCourse
                             break;
                         case MessageType.REQUEST_INFO:
                             mailMessage.Subject = $"Ваша заявка на перепрохождение теста {testName} была {requestStatus}";
-                            mailMessage.Body = $"Ваша заявка на перепрохождение теста {testName} была {requestStatus}!\n\rЭто письмо создано автоматически, отвечать на него не нужно.\n\rЕсли вы считаете что это сообщение пришло вам по ошибке, то просто удалите его.";
+                            mailMessage.Body = $"Ваша заявка на перепрохождение теста {testName} была {requestStatus}!\n\rЭто письмо создано автоматически, отвечать на него не нужно.";
+                            break;
+                        case MessageType.REQUEST_SENDED:
+                            mailMessage.Subject = $"Вам был отправлен запрос на перепрохождение теста";
+                            mailMessage.Body = $"Вам был отправлен запрос на перепрохождение теста {testName}! Вы можете одобрить или отклонить его в приложении во вкладке \"Запросы\"\n\rЭто письмо создано автоматически, отвечать на него не нужно.";
                             break;
                     }
 
