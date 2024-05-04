@@ -59,7 +59,7 @@
                         Content="RU" Margin="0,0,15,20" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="LangButton_Click">
                 </Button>
                 <Button x:Name="NotificationsButton" Style="{DynamicResource SideMenuButton}" HorizontalContentAlignment="Center"
-                        Padding="10,7" BorderThickness="0" DockPanel.Dock="Left"
+                        Padding="10,7" BorderThickness="0" DockPanel.Dock="Right"
                         Height="60"
                         Content="N-0" Margin="0,0,0,20" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Click="NotificationsButton_Click">
                 </Button>

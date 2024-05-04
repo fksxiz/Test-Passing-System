@@ -24,6 +24,7 @@ namespace QQCourse.Pages
         {
             InitializeComponent();
             UpdateListBox();
+            RemoveNotifications();
         }
 
         private void UpdateListBox()
@@ -31,9 +32,31 @@ namespace QQCourse.Pages
             NotificationsListBox.ItemsSource = Core.AppMainWindow.notifications;
         }
 
+        private void RemoveNotifications()
+        {
+            try
+            {
+                var notifications = Core.Database.Notifications.Where(n => n.UserId == Core.CurrentUser.Id);
+                foreach (var notification in notifications)
+                {
+                    Core.Database.Notifications.Remove(notification);
+                }
+                Core.Database.SaveChanges();
+            }
+            catch
+            {
+                Core.CancelChanges(Core.Database.Notifications);
+            }
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Core.AppMainWindow.CloseAllPage();
+        }
+
+        private void NotificationsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
