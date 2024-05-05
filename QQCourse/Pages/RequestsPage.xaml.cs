@@ -72,22 +72,24 @@ namespace QQCourse.Pages
                 try
                 {
                     Requests currentRequest = RequestListView.SelectedItem as Requests;
-                    var results = Core.Database.Results.Where(T=>T.TestId == currentRequest.TestId && T.UserId == currentRequest.UserId);
+                    var results = Core.Database.Results.Where(T => T.TestId == currentRequest.TestId && T.UserId == currentRequest.UserId);
                     string testName = currentRequest.Tests.Name;
                     int userId = (int)currentRequest.UserId;
                     foreach (var result in results)
                     {
                         Core.Database.Results.Remove(result);
                     }
-                    emailSender.SendMessage(currentRequest.Users.Email, testName, "одобрена");
+                    if (currentRequest.Users.Verified==true) {
+                        emailSender.SendMessage(currentRequest.Users.Email, testName, "одобрена");
+                    }
                     Core.Database.Requests.Remove(currentRequest);
                     SendNotification(userId, testName);
                     Core.Database.SaveChanges();
                     UpdateRequests();
                 }catch (Exception ex)
                 {
-                    Core.CancelChanges(Core.Database.Requests);
                     Core.CancelChanges(Core.Database.Results);
+                    Core.CancelChanges(Core.Database.Requests);
                     DBSaveException();
                 }
             }
@@ -104,11 +106,13 @@ namespace QQCourse.Pages
                         var currentRequest = RequestListView.SelectedItem as Requests;
                         string testName = currentRequest.Tests.Name;
                         int userId = (int)currentRequest.UserId;
-                        Core.Database.Requests.Remove(currentRequest);
-                        emailSender.SendMessage(currentRequest.Users.Email, testName, "одобрена");
+                        if (currentRequest.Users.Verified == true)
+                        {
+                            emailSender.SendMessage(currentRequest.Users.Email, testName, "отклонена");
+                        }
                         SendNotification(userId, testName,"отклонен");
+                        Core.Database.Requests.Remove(currentRequest);
                         Core.Database.SaveChanges();
-                        emailSender.SendMessage(currentRequest.Users.Email, testName, "отклонена");
                         UpdateRequests();
                     }
                     catch (Exception ex)
