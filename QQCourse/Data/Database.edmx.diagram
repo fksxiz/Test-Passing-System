@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f2c1bfba2d54ecdb3c0cc5780c3ebe6" Name="Diagram1" ZoomLevel="44">
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Answers" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Notifications" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Questions" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Requests" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Results" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Tests" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="mi_TestPassingSystemModel.Users" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Answers_Questions" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Notifications_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Questions_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Requests_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Requests_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Results_Tests" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Results_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="mi_TestPassingSystemModel.FK_Tests_Users" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

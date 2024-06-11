@@ -34,7 +34,6 @@ namespace QQCourse.Data
         public Nullable<bool> Gender { get; set; }
         public byte[] Avatar { get; set; }
         public Nullable<bool> Verified { get; set; }
-        public string NeedTraining { get; set; }
     
         public virtual ICollection<Notifications> Notifications { get; set; }
         public virtual ICollection<Requests> Requests { get; set; }

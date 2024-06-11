@@ -1,19 +1,8 @@
 ﻿using QQCourse.Data;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace QQCourse.Pages
 {
@@ -45,19 +34,9 @@ namespace QQCourse.Pages
             }
         }
 
-        private int GetSelectedIndex()
-        {
-            return RequestListView.SelectedIndex;
-        }
-
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateRequests();
-        }
-
-        private void TestsListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
         }
 
         private void RequestListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -86,7 +65,7 @@ namespace QQCourse.Pages
                     SendNotification(userId, testName);
                     Core.Database.SaveChanges();
                     UpdateRequests();
-                }catch (Exception ex)
+                }catch
                 {
                     Core.CancelChanges(Core.Database.Results);
                     Core.CancelChanges(Core.Database.Requests);
@@ -115,7 +94,7 @@ namespace QQCourse.Pages
                         Core.Database.SaveChanges();
                         UpdateRequests();
                     }
-                    catch (Exception ex)
+                    catch
                     {
                         Core.CancelChanges(Core.Database.Requests);
                         Core.CancelChanges(Core.Database.Results);

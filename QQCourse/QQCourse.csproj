@@ -80,49 +80,49 @@
     <Compile Include="Common\ETDOut.cs" />
     <Compile Include="Common\ImageParserBase64.cs" />
     <Compile Include="Data\Answers.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Dstsbase.Context.cs">
+    <Compile Include="Data\Database.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dstsbase.Context.tt</DependentUpon>
+      <DependentUpon>Database.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Dstsbase.cs">
+    <Compile Include="Data\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Dstsbase.Designer.cs">
+    <Compile Include="Data\Database.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Dstsbase.edmx</DependentUpon>
+      <DependentUpon>Database.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\Notifications.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Questions.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Requests.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Results.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Tests.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Users.cs">
-      <DependentUpon>Dstsbase.tt</DependentUpon>
+      <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditQuestionsPage.xaml.cs">
       <DependentUpon>EditQuestionsPage.xaml</DependentUpon>
@@ -281,12 +281,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\Dstsbase.edmx">
+    <EntityDeploy Include="Data\Database.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Dstsbase.Designer.cs</LastGenOutput>
+      <LastGenOutput>Database.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\Dstsbase.edmx.diagram">
-      <DependentUpon>Dstsbase.edmx</DependentUpon>
+    <None Include="Data\Database.edmx.diagram">
+      <DependentUpon>Database.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -306,15 +306,15 @@
     <Resource Include="Pages\Images\TestImageBlank.png" />
     <Resource Include="Pages\Images\TestImageBlue.png" />
     <Resource Include="Images\DarkTheme.png" />
-    <Content Include="Data\Dstsbase.Context.tt">
+    <Content Include="Data\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Dstsbase.edmx</DependentUpon>
-      <LastGenOutput>Dstsbase.Context.cs</LastGenOutput>
+      <DependentUpon>Database.edmx</DependentUpon>
+      <LastGenOutput>Database.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\Dstsbase.tt">
+    <Content Include="Data\Database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Dstsbase.edmx</DependentUpon>
-      <LastGenOutput>Dstsbase.cs</LastGenOutput>
+      <DependentUpon>Database.edmx</DependentUpon>
+      <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
     <Content Include="Images\DarkTheme.svg" />
     <Resource Include="Images\LightTheme.png" />

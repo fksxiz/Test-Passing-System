@@ -91,7 +91,6 @@
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Verified" ColumnName="Verified" />
-          <ScalarProperty Name="NeedTraining" ColumnName="NeedTraining" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

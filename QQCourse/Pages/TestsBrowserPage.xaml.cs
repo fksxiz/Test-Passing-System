@@ -22,7 +22,6 @@ namespace QQCourse.Pages
     /// </summary>
     public partial class TestsBrowserPage : Page
     {
-        private ObservableCollection<Tests> tests;
         public TestsBrowserPage()
         {
             InitializeComponent();

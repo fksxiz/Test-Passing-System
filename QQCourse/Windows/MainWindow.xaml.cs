@@ -95,7 +95,7 @@ namespace QQCourse
                         NotificationsButton.Content = "N - " + notifications.Count;
                     }
                 }
-                await Task.Delay(TimeSpan.FromSeconds(15));
+                await Task.Delay(TimeSpan.FromSeconds(3));
             }
         }
 

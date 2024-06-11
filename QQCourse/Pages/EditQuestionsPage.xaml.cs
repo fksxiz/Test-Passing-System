@@ -1,20 +1,11 @@
 ﻿using QQCourse.Data;
 using QQCourse.Windows;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace QQCourse.Pages
 {
@@ -24,8 +15,6 @@ namespace QQCourse.Pages
     public partial class EditQuestionsPage : Page
     {
         private int id;
-        private CollectionViewSource QuestViewModel { get; set; }
-        private CollectionViewSource AnsViewModel { get; set; }
         private Page Page;
         public EditQuestionsPage(Page page,int id)
         {
@@ -83,11 +72,6 @@ namespace QQCourse.Pages
         private void SearchAnsTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateAnsListView();
-        }
-
-        private void AnswersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
 
         private void QuestionsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

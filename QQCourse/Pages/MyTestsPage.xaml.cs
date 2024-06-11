@@ -1,19 +1,10 @@
 ﻿using QQCourse.Windows;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace QQCourse.Pages
 {
@@ -23,12 +14,10 @@ namespace QQCourse.Pages
     public partial class MyTestsPage : Page
     {
         private List<Page> ActivePages;
-        private int CurrentPageIndex;
         public MyTestsPage()
         {
             InitializeComponent();
             UpdateTests();
-            CurrentPageIndex = -1;
             ActivePages = new List<Page>();
         }
 
@@ -113,7 +102,6 @@ namespace QQCourse.Pages
         public void CloseAllPage()
         {
             ActivePages.RemoveAll(p => true);
-            CurrentPageIndex = -1;
             QeustionsFrame.Navigate(null);
         }
 
